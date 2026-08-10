@@ -26,7 +26,7 @@ services:
 
   backend:
     container_name: backend
-    build: 
+    build:
       context: ./backend
       target: development
     restart: always
@@ -36,6 +36,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/MarketTicket
       SPRING_DATASOURCE_USERNAME: ${DB_USER}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
     volumes:
       - ./backend:/app
       - maven-cache:/root/.m2
