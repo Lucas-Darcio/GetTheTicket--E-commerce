@@ -42,4 +42,10 @@ public class UserService {
                 user.getId(), user.getName(), user.getEmail(), user.getRole().name()
         );
     }
+
+    public UserResponseDTO findByEmail(String email) {
+        User user = repository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException(email));
+        return toResponseDTO(user);
+    }
 }
